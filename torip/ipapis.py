@@ -2,6 +2,8 @@ import json
 from tornado import httpclient
 from tornado.gen import coroutine
 
+from torip import utilities
+
 __author__ = 'mendrugory'
 
 
@@ -18,38 +20,46 @@ def api_factory(api_name):
 
 
 class LocateApi:
-    def __init__(self):
+    def __init__(self, ioloop=None):
         self.url = None
         self.original_url = None
+        self.ioloop = ioloop
 
     @coroutine
     def locate(self, ip):
-        '''
+        """
         Main function of the class whose output will be a dictionary with the information
         provided by the selected API.
         :param ip: IP or server name (String)
         :return: dict()
-        '''
+        """
         self.build_url(ip)
         data = yield self.fetch_data()
         result = None
         if data:
-            result = self.adapt(data)
+            result = LocateApi.enrich(self.adapt(data))
         return result
 
     @coroutine
     def fetch_data(self):
-        '''
+        """
         It fetchs the data from the self.url
         :return: dict()
-        '''
-        http_client = httpclient.AsyncHTTPClient()
+        """
+        http_client = self.get_http_client()
         try:
             response = yield http_client.fetch(self.url)
             data = json.loads(response.body.decode('utf-8'))
         finally:
             http_client.close()
         return data
+
+    def get_http_client(self):
+        """
+        It creates an instance of AsyncHTTPClient. You can pass it the ioloop, prepared for testing.
+        :return:
+        """
+        return httpclient.AsyncHTTPClient(self.ioloop) if self.ioloop else httpclient.AsyncHTTPClient()
 
     def build_url(self, ip):
         """
@@ -66,14 +76,24 @@ class LocateApi:
         """
         return data
 
+    @staticmethod
+    def enrich(data):
+        """
+        It enrich the received data with the utilities functions
+        :param data: dict()
+        :return: dict()
+        """
+        data['google_maps'] = utilities.get_google_maps_url(data)
+        return data
+
 
 class IpApi(LocateApi):
     """
     IpLocateApi for the api of ip-api.com
     """
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, ioloop=None):
+        super().__init__(ioloop)
         self.original_url = 'http://ip-api.com/json/{}'
 
     def build_url(self, ip):
@@ -100,8 +120,8 @@ class FreeGeoIp(LocateApi):
     IpLocateApi for the api of freegeoip.net
     """
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, ioloop=None):
+        super().__init__(ioloop)
         self.original_url = 'https://freegeoip.net/json/{}'
 
     def adapt(self, data):
