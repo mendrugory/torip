@@ -13,6 +13,7 @@ $ pip install torip
 
 ## Available APIs
 Torip supports the following APIs:
+
 ### [ip-api] [IPAPI]
 It is also the default API.
 

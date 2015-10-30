@@ -1,6 +1,7 @@
 #!venv/bin/python
 import os
 from setuptools import setup, find_packages
+import pypandoc
 
 
 def read(fname):
@@ -9,7 +10,7 @@ def read(fname):
 
 setup(
     name="torip",
-    version="0.1.1",
+    version="0.1.2",
     author="mendrugory",
     author_email="mendrugory@gmail.com",
     description="Library for Tornado web framework to locate IPs or server names.",
@@ -17,7 +18,7 @@ setup(
     keywords="Tornado IP Locate",
     url="https://github.com/mendrugory/torip",
     packages=find_packages(),
-    long_description=read('README.md'),
+    long_description=pypandoc.convert('README.md', 'rst'),
     install_requires=[
         'tornado',
     ],
