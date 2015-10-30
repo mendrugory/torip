@@ -1,5 +1,7 @@
 # torip
-Python3 library for Tornado web framework to locate IPs or server names
+Python library for Tornado web framework to locate IPs or server names
+
+torip has been developed and tested using Python3.4
 
 
 ## Available APIs

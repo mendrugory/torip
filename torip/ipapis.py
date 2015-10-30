@@ -24,6 +24,12 @@ class LocateApi:
 
     @coroutine
     def locate(self, ip):
+        '''
+        Main function of the class whose output will be a dictionary with the information
+        provided by the selected API.
+        :param ip: IP or server name (String)
+        :return: dict()
+        '''
         self.build_url(ip)
         data = yield self.fetch_data()
         result = None
@@ -33,6 +39,10 @@ class LocateApi:
 
     @coroutine
     def fetch_data(self):
+        '''
+        It fetchs the data from the self.url
+        :return: dict()
+        '''
         http_client = httpclient.AsyncHTTPClient()
         try:
             response = yield http_client.fetch(self.url)
@@ -42,9 +52,18 @@ class LocateApi:
         return data
 
     def build_url(self, ip):
+        """
+        It fetchs the data from the self.url
+        :return: dict()
+        """
         self.url = self.original_url.format(ip)
 
     def adapt(self, data):
+        """
+        It adapt the output of the data
+        :param data: dictionary with the data from the API
+        :return: dict()
+        """
         return data
 
 
@@ -78,7 +97,7 @@ class IpApi(LocateApi):
 
 class FreeGeoIp(LocateApi):
     """
-    IpLocateApi for the api of ip-api.com
+    IpLocateApi for the api of freegeoip.net
     """
 
     def __init__(self):
