@@ -1,10 +1,15 @@
 # torip
-Python library for Tornado web framework to locate IPs or server names
+Python library for Tornado web framework to locate IPs or server names.
 
 Torip will provide you information like country, city, zip code or the url of google maps.
 
 Torip has been developed and tested using Python3.4
 
+
+## Installation
+```console
+$ pip install torip
+```
 
 ## Available APIs
 Torip supports the following APIs:

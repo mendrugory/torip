@@ -9,18 +9,22 @@ def read(fname):
 
 setup(
     name="torip",
-    version="0.0.1",
+    version="0.1.1",
     author="mendrugory",
     author_email="mendrugory@gmail.com",
-    description="Library for locating IP for Tornado Web Framework.",
+    description="Library for Tornado web framework to locate IPs or server names.",
     license="MIT License",
     keywords="Tornado IP Locate",
-    url="",
+    url="https://github.com/mendrugory/torip",
     packages=find_packages(),
     long_description=read('README.md'),
-    classifiers=[
-        "Development Status :: 0.04 - Beta",
-        "Topic :: Tornado IP Locate",
-        "License :: MIT License",
+    install_requires=[
+        'tornado',
     ],
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Topic :: Utilities",
+        "License :: OSI Approved :: MIT License",
+        "Intended Audience :: Developers"
+    ]
 )

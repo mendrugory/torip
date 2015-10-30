@@ -55,6 +55,7 @@ docs/_build/
 #Others
 venv/
 venv_creation.sh
+upload_to_pypi.sh
 .idea
 __pycache__
 .*~
