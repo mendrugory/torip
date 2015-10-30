@@ -1,1 +1,3 @@
+coverage==4.0.1
+pypandoc==1.1.2
 tornado==4.2.1

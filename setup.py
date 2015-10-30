@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
     name="torip",
-    version="0.1.2",
+    version="0.1.3",
     author="mendrugory",
     author_email="mendrugory@gmail.com",
     description="Library for Tornado web framework to locate IPs or server names.",
@@ -20,7 +20,7 @@ setup(
     packages=find_packages(),
     long_description=pypandoc.convert('README.md', 'rst'),
     install_requires=[
-        'tornado',
+        'tornado','pypandoc'
     ],
     classifiers=[
         "Development Status :: 4 - Beta",
