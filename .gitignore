@@ -50,7 +50,7 @@ coverage.xml
 *.pot
 app.py
 # Sphinx documentation
-docs/_build/
+doc/build/
 
 #Others
 venv/
