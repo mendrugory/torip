@@ -5,8 +5,7 @@
 
 Welcome to torip's documentation!
 =================================
-torip
-=====
+
 
 Python library for Tornado web framework to locate IPs or server names.
 
