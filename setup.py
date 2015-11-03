@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name="torip",
-    version="0.1.4",
+    version="0.1.5",
     author="mendrugory",
     author_email="mendrugory@gmail.com",
     description="Library for Tornado web framework to locate IPs or server names.",

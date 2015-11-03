@@ -3,6 +3,7 @@ from tornado import httpclient
 from tornado.gen import coroutine
 
 from torip import utilities
+from torip.exceptions import ToripException
 
 __author__ = 'mendrugory'
 
@@ -100,6 +101,8 @@ class IpApi(LocateApi):
         self.url = self.original_url.format(ip)
 
     def adapt(self, data):
+        if data.get('status') == 'fail':
+            raise ToripException('Error: {}'.format(data['message']))
         return {
             'region_name': data['regionName'],
             'region_code': data['region'],

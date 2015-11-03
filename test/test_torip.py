@@ -4,6 +4,7 @@ from tornado.testing import AsyncTestCase
 
 from torip.ipapis import IpApi, FreeGeoIp, api_factory
 from torip import utilities
+from torip.exceptions import ToripException
 
 __author__ = 'mendrugory'
 
@@ -40,6 +41,14 @@ class TestCase(AsyncTestCase):
         locator = FreeGeoIp(self.io_loop)
         result = yield locator.locate(self.ip_freegeoip)
         self.assertEquals('New York', result['city'])
+
+    @tornado.testing.gen_test
+    def test_ip_api_private_address(self):
+        address = '192.168.1.1'
+        locator = IpApi(self.io_loop)
+        with self.assertRaises(ToripException) as context:
+            yield locator.locate(address)
+        self.assertIsInstance(context.exception, ToripException)
 
 
 if __name__ == '__main__':
