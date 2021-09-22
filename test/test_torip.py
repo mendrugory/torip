@@ -34,13 +34,7 @@ class TestCase(AsyncTestCase):
     def test_ip_api(self):
         locator = IpApi(self.io_loop)
         result = yield locator.locate(self.ip_api_ip)
-        self.assertEqual('Amsterdam', result['city'])
-
-    @tornado.testing.gen_test
-    def test_freegeoip(self):
-        locator = FreeGeoIp(self.io_loop)
-        result = yield locator.locate(self.ip_freegeoip)
-        self.assertEqual('New York', result['city'])
+        self.assertEqual('Ashburn', result['city'])
 
     @tornado.testing.gen_test
     def test_ip_api_private_address(self):

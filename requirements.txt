@@ -1,2 +1,2 @@
 coverage==4.0.1
-tornado==4.2.1
+tornado==6.1
