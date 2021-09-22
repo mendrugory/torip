@@ -1,23 +1,22 @@
 #!venv/bin/python
-import os
 from setuptools import setup, find_packages
 
 
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name="torip",
-    version="0.1.5",
-    author="mendrugory",
-    author_email="mendrugory@gmail.com",
+    version="RELEASE_VERSION",
+    author="Gonzalo Gabriel Jiménez Fuentes",
+    author_email="iam@mendrugory.com",
     description="Library for Tornado web framework to locate IPs or server names.",
     license="MIT License",
     keywords="Tornado IP Locate",
     url="https://github.com/mendrugory/torip",
     packages=find_packages(),
-    long_description=read('README.rst'),
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     install_requires=[
         'tornado'
     ],

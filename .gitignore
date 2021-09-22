@@ -62,3 +62,5 @@ __pycache__
 .
 ..
 *~
+.pipy-token
+.venv
