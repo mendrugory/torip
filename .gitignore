@@ -64,3 +64,4 @@ __pycache__
 *~
 .pipy-token
 .venv
+.api-keys

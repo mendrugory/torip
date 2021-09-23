@@ -69,6 +69,6 @@ Example
             print(str(e))
         finally:
             ioloop.stop()
-    ioloop = tornado.ioloop.IOLoop.instance()
+    ioloop = tornado.ioloop.ioloop.instance()
     ioloop.add_callback(function)
     ioloop.start()
