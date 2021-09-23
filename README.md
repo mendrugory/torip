@@ -6,8 +6,6 @@ Python library for Tornado web framework to locate IPs or server names.
 
 Torip will provide you information like country, city, zip code or the url of google maps.
 
-Torip has been developed and tested using Python3.4
-
 ## Installation
 
 ```bash
@@ -18,23 +16,26 @@ $ pip install torip
 
 Torip supports the following APIs:
 
-### [ip-api] [IPAPI]
+### [abstractapi] [ABAPI]
 It is also the default API.
 
 ```python
 from torip.locator import Locator
-locator = Locator(api_name='ip-api')
-```
-or
-```python
-from torip.locator import Locator
-locator = Locator()  # default API
+locator = Locator(api_name='abstractapi', api_token=<Your API TOKEN>)
 ```
 
-### [freegeoip.net] [FGI]
+or
+
 ```python
 from torip.locator import Locator
-locator = Locator(api_name='freegeoip')
+locator = Locator(api_token=<Your API TOKEN>)  # default API
+```
+
+### [ip-api] [IPAPI]
+
+```python
+from torip.locator import Locator
+locator = Locator(api_name='ip-api')
 ```
 
 ## Example
@@ -42,21 +43,21 @@ locator = Locator(api_name='freegeoip')
 ```python
 import tornado
 from torip.locator import Locator
-ip = ''  # IP or server name
+ip = '<IP ADDRESS>'
 @tornado.gen.coroutine
 def function():
     try:
-        locator = Locator()
+        locator = Locator(api_token='<YOUR API TOKEN>')
         result = yield locator.locate(ip)
         print(result)
     except Exception as e:
         print(str(e))
     finally:
         ioloop.stop()
-ioloop = tornado.ioloop.IOLoop.instance()
+ioloop = tornado.ioloop.IOloop.instance()
 ioloop.add_callback(function)
 ioloop.start()
 ```
 
-[FGI]:<https://freegeoip.net>
+[ABAPI]:<https://app.abstractapi.com/api/ip-geolocation/documentation>
 [IPAPI]: <http://ip-api.com/>
