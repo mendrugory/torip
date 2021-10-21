@@ -59,5 +59,11 @@ ioloop.add_callback(function)
 ioloop.start()
 ```
 
-[ABAPI]:<https://app.abstractapi.com/api/ip-geolocation/documentation>
+[ABAPI]:<https://www.abstractapi.com/ip-geolocation-api>
 [IPAPI]: <http://ip-api.com/>
+
+## Docs
+
+* [github](https://github.com/mendrugory/torip)
+* [pypi](https://pypi.org/project/torip/)
+* [readthedocs](https://torip.readthedocs.io)
