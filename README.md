@@ -54,7 +54,7 @@ def function():
         print(str(e))
     finally:
         ioloop.stop()
-ioloop = tornado.ioloop.IOloop.instance()
+ioloop = tornado.ioloop.IOLoop.instance()
 ioloop.add_callback(function)
 ioloop.start()
 ```
